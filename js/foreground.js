@@ -24,7 +24,7 @@
 var clickFunction = function (index, elements) {
     if (index < elements.length) {
         elements[index].click();
-        setTimeout(() => clickFunction(index + 1, elements), 100);
+        setTimeout(() => clickFunction(index + 1, elements), 120);
     }
 };
 const claimButtonsSelector = "button.makeclaim";
@@ -34,11 +34,10 @@ claimAllButton.on("click", () => clickFunction(0, $(claimButtonsSelector)));
 
 setInterval(() => {
     //загрузился ли блок фасета
-    const elements = $('#availableFaucets div');
-    if (elements.length < 1) return;
-    //Если блок перезагрузился добавим кнопку снова
-    if ($(placeForClaimButton).html())
+    if ($('#availableFaucets div').length < 1) return;
+    //добавление кнопки сбора всего
+    if ($(placeForClaimButton).children().length < 1)
         claimAllButton.appendTo(placeForClaimButton);
 
-    claimAllButton.toggle($(claimButtonsSelector).length > 0)
+    claimAllButton.toggle($(claimButtonsSelector).length > 0);
 }, 500);

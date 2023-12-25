@@ -15,14 +15,12 @@
         "default_popup": "html/popup.html"
     },
     "host_permissions": [
-        "https://xeggex.com/faucet*"
+        "https://xeggex.com/faucet*",
+        "https://api.xeggex.com/api/v2/*"
     ],
     "permissions": [
         "storage"
     ],
-    "background": {
-        "service_worker": "js/service-worker.js"
-    },
     "content_scripts": [
         {
             "js": [
