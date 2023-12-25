@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' data: gap: https://api.xeggex.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' https://api.xeggex.com;">
+    <link rel="stylesheet" href="../css/popup.css" />
+</head>
+
+<body>
+    <div id="connect">
+        <div class="loginform">
+            <h2>API connect</h2>
+            <div class="form">
+                <div class="inputBox">
+                    <input name="apiKey" type="text"> <i>API key</i>
+                </div>
+                <div class="inputBox">
+                    <input name="apiSecred" type="password"> <i>API Secred</i>
+                </div>
+                <div class="error"></div>
+                <div class="inputBox">
+                    <input type="submit" value="Save">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="exchangeSection">
+        <div class="exchangeForm">
+            <h1>Exchange</h1>
+            <button>Convert all balances</button>
+            <div id="debug"></div>
+        </div>
+    </div>
+
+    <script src=" ../js/lib/jquery-3.7.1.min.js" type="module"></script>
+    <script src=" ../js/popup.js" type="module">
+    </script>
+</body>
+
+</html>
