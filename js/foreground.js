@@ -21,23 +21,27 @@
  *   SOFTWARE.
  */
 
-var clickFunction = function (index, elements) {
+const claimButtonArea = "#availableFaucets > div:first-child div:last-child";
+const claimButton = claimButtonArea + " > button";
+const clickFunction = function (index, elements) {
+    if(elements == null)
+        return;
     if (index < elements.length) {
         elements[index].click();
         setTimeout(() => clickFunction(index + 1, elements), 120);
     }
 };
-const claimButtonsSelector = "button.makeclaim";
-const placeForClaimButton = "#availableFaucets > div:first-child div:last-child";
-const claimAllButton = $("<button style='display:none; width: 100%;' class='btn btn-sm btn-success'>Claim all</button>");
-claimAllButton.on("click", () => clickFunction(0, $(claimButtonsSelector)));
 
-setInterval(() => {
+var intervalId = setInterval(() => {
     //загрузился ли блок фасета
-    if ($('#availableFaucets div').length < 1) return;
-    //добавление кнопки сбора всего
-    if ($(placeForClaimButton).children().length < 1)
-        claimAllButton.appendTo(placeForClaimButton);
-
-    claimAllButton.toggle($(claimButtonsSelector).length > 0);
+    if (document.querySelector('#availableFaucets div') == null) return;
+    var button = document.querySelector(claimButton);
+    const otherButtons = document.querySelector("button.makeclaim");
+    if(button == null){
+        //проверка необходимости отображения кнопки
+        document.querySelector(claimButtonArea).innerHTML = "<button style='display:none; width: 100%;' class='btn btn-sm btn-success'>Claim all</button>";
+        button = document.querySelector(claimButton);
+    }
+    button.style["display"] = otherButtons == null ? 'none' : 'block';
+    button.onclick = function() { clickFunction(0, otherButtons) };
 }, 500);
