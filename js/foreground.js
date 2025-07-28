@@ -36,12 +36,12 @@ var intervalId = setInterval(() => {
     //загрузился ли блок фасета
     if (document.querySelector('#availableFaucets div') == null) return;
     var button = document.querySelector(claimButton);
-    const otherButtons = document.querySelector("button.makeclaim");
+    const otherButtons = document.querySelectorAll("button.makeclaim");
     if(button == null){
         //проверка необходимости отображения кнопки
         document.querySelector(claimButtonArea).innerHTML = "<button style='display:none; width: 100%;' class='btn btn-sm btn-success'>Claim all</button>";
         button = document.querySelector(claimButton);
     }
-    button.style["display"] = otherButtons == null ? 'none' : 'block';
+    button.style["display"] = otherButtons.length <= 0 ? 'none' : 'block';
     button.onclick = function() { clickFunction(0, otherButtons) };
 }, 500);
